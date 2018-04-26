@@ -184,6 +184,8 @@ LEVELDB_EXPORT void leveldb_options_set_cache(leveldb_options_t*,
 LEVELDB_EXPORT void leveldb_options_set_block_size(leveldb_options_t*, size_t);
 LEVELDB_EXPORT void leveldb_options_set_block_restart_interval(
     leveldb_options_t*, int);
+LEVELDB_EXPORT void leveldb_options_set_max_file_size(leveldb_options_t*,
+                                                      size_t);
 
 enum {
   leveldb_no_compression = 0,
@@ -242,6 +244,9 @@ LEVELDB_EXPORT void leveldb_cache_destroy(leveldb_cache_t* cache);
 
 LEVELDB_EXPORT leveldb_env_t* leveldb_create_default_env();
 LEVELDB_EXPORT void leveldb_env_destroy(leveldb_env_t*);
+
+/* If not NULL, the returned buffer must be released using leveldb_free(). */
+LEVELDB_EXPORT char* leveldb_env_get_test_directory(leveldb_env_t*);
 
 /* Utility */
 
